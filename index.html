@@ -70,7 +70,7 @@ td.best{color:var(--acc);font-weight:700}
 <script>
 let DATA=[], SEL=new Set(), OPEN=new Set();
 const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const esc=s=>String(s==null?"":s).replace(/&#43;/g,"+").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>Number(n).toLocaleString("ru-RU").replace(/ /g," ")+" ₸";
 const num=s=>{const m=String(s||"").match(/\d+/);return m?+m[0]:0};
 function spec(it,name){const s=it.specs.find(x=>x.name===name);return s?s.value:""}
