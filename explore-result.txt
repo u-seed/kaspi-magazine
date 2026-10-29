@@ -1,0 +1,9 @@
+price range: 12 items, brands/prices [('Apple', 1399990), ('Apple', 1399990), ('Apple', 2199990), ('Apple', 2538990), ('Apple', 885502), ('Apple', 1177604), ('Apple', 1684888), ('Apple', 732292), ('Apple', 859729), ('Apple', 801662), ('Apple', 787647), ('Apple', 809630)]
+price range 2: 12 items, brands/prices [('Apple', 1399990), ('Apple', 1399990), ('Apple', 2199990), ('Apple', 2538990), ('Apple', 885502), ('Apple', 1177604), ('Apple', 1684888), ('Apple', 732292), ('Apple', 859729), ('Apple', 801958), ('Apple', 787647), ('Apple', 809630)]
+manufacturer Honor: 12 items, brands/prices [('Apple', 1399990), ('Apple', 1399990), ('Apple', 2199990), ('Apple', 2538990), ('Apple', 885502), ('Apple', 1177604), ('Apple', 1684888), ('Apple', 732292), ('Apple', 859729), ('Apple', 801958), ('Apple', 787647), ('Apple', 809630)]
+manufacturer Xiaomi: 12 items, brands/prices [('Apple', 1399990), ('Apple', 1399990), ('Apple', 2199990), ('Apple', 2538990), ('Apple', 885502), ('Apple', 1177604), ('Apple', 1684888), ('Apple', 732292), ('Apple', 859729), ('Apple', 801958), ('Apple', 787647), ('Apple', 809630)]
+manufacturer+price: 12 items, brands/prices [('Apple', 1399990), ('Apple', 1399990), ('Apple', 2199990), ('Apple', 2538990), ('Apple', 885502), ('Apple', 1177604), ('Apple', 1684888), ('Apple', 732292), ('Apple', 859729), ('Apple', 801958), ('Apple', 787647), ('Apple', 809630)]
+honor page 5 -> 12 items
+honor page 20 -> 12 items
+honor page 60 -> 12 items
+no non-apple item found
