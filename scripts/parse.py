@@ -33,22 +33,46 @@ def flt(q, sort="price-asc", page=0):
 BATT = ":Smartphones*Battery capacity:более 6000 мАч"
 buckets = [":price:150 000 - 199 999 т", ":price:200 000 - 499 999 т"]
 raw, seen_ids = [], set()
-for b in buckets:
-    q = ":category:Smartphones" + BATT + b
-    d0 = flt(q, page=0)
+
+def crawl(q, label):
+    """листаем выдачу по возрастанию цены; при ошибке страницы останавливаемся и пишем в лог"""
+    try:
+        d0 = flt(q, page=0)
+    except Exception as e:
+        log("  [%s] ошибка первой страницы: %s" % (label, e)); return 0
     total = d0["total"]
-    log("запрос %s: total=%s, на странице %d" % (b, total, len(d0["cards"])))
     pages = (total + 11) // 12
+    got = 0
     for p in range(pages):
-        d = d0 if p == 0 else flt(q, page=p)
+        try:
+            d = d0 if p == 0 else flt(q, page=p)
+        except Exception as e:
+            log("  [%s] стоп на странице %d из %d: %s" % (label, p, pages, e)); return -1
         cards = d["cards"]
         if not cards: break
         for c in cards:
             if c["id"] in seen_ids: continue
             seen_ids.add(c["id"])
-            if c["unitPrice"] <= PRICE_MAX: raw.append(c)
+            if c["unitPrice"] <= PRICE_MAX: raw.append(c); got += 1
         if cards[-1]["unitPrice"] > PRICE_MAX: break
-        time.sleep(0.5)
+        time.sleep(0.4)
+    return got
+
+for b in buckets:
+    q = ":category:Smartphones" + BATT + b
+    d0 = flt(q, page=0)
+    total = d0["total"]
+    log("запрос %s: total=%s" % (b, total))
+    # режем по брендам, чтобы не упираться в лимит листания
+    brands = []
+    for f in d0["filters"]:
+        if f["id"] == "manufacturerName":
+            brands = [(r["id"].split(":", 2)[2], r["count"]) for r in f["rows"] if r["count"] > 0]
+    brands = [(n, c) for n, c in brands if n.lower() not in EXCLUDE_BRANDS]
+    log("  брендов с товарами: %d" % len(brands))
+    for name, cnt in brands:
+        g = crawl(q + ":manufacturerName:" + name, name)
+        log("  %s: ожидалось %d, взято %s" % (name, cnt, g))
     log("  собрано всего: %d" % len(raw))
 
 raw = [c for c in raw if PRICE_MIN <= c["unitPrice"] <= PRICE_MAX and c["brand"].lower() not in EXCLUDE_BRANDS
