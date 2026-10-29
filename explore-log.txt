@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/runner/work/kaspi-magazine/kaspi-magazine/scripts/explore.py", line 33, in <module>
+    item = next(x for x in d["data"] if x.get("brand") not in ("Apple", "Samsung"))
+StopIteration
+FAILED
