@@ -10,6 +10,7 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Check if Kaspi answers from GitHub Actions
         run: |
           exec > probe-result.txt 2>&1
