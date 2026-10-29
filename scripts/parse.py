@@ -29,6 +29,10 @@ def flt(q, sort="price-asc", page=0):
     u = BASE + "/yml/product-view/pl/filters?q=%s&text=&sort=%s&qs=&page=%d&ui=d&i=-1&c=750000000" % (urllib.parse.quote(q), sort, page)
     return json.loads(get(u))["data"]
 
+def res(q, sort="price-asc", page=0):
+    u = BASE + "/yml/product-view/pl/results?page=%d&q=%s&text=&sort=%s&qs=&ui=d&i=-1&c=750000000" % (page, urllib.parse.quote(q), sort)
+    return json.loads(get(u))["data"]
+
 # ---------- 1. список ----------
 BATT = ":Smartphones*Battery capacity:более 6000 мАч"
 buckets = [":price:150 000 - 199 999 т", ":price:200 000 - 499 999 т"]
@@ -45,10 +49,9 @@ def crawl(q, label):
     got = 0
     for p in range(pages):
         try:
-            d = d0 if p == 0 else flt(q, page=p)
+            cards = d0["cards"] if p == 0 else res(q, page=p)
         except Exception as e:
             log("  [%s] стоп на странице %d из %d: %s" % (label, p, pages, e)); return -1
-        cards = d["cards"]
         if not cards: break
         for c in cards:
             if c["id"] in seen_ids: continue
