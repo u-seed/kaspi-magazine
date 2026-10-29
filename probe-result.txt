@@ -1,6 +1,0 @@
---- category page
-HTTP 200, 328219 bytes
-<!doctype html><html lang="ru-RU" prefix="og: http://ogp.me/ns#" class="no-js"><head><title>Смартфоны в Алматы - купить в Магазине на Kaspi.kz</title><link rel="image_src" type="image/jpeg" href="https://resources.cdn-kaspi.kz/medias/sys_master/images/images/h59/h2f/8857959432222.jpg"><meta content="IE=edge" http-equiv="X-UA-Compatible"><meta content="on" http-equiv="x-dns-prefetch-control"><meta name="viewport" content="width=1000"><meta name="HandheldFriendly" content="True"><meta name="format-detection" content="telephone=no"><meta property="og:site_name" co
---- product list json
-HTTP 200, 37115 bytes
-{"data":[{"id":"180533183","configSku":"180533183","title":"Смартфон Apple iPhone Duo 256Gb dual eSIM синий","brand":"Apple","categoryId":"00003","hasVariants":false,"loanAvailable":true,"shopLink":"/p/apple-iphone-duo-256gb-dual-esim-sinii-180533183/?c=750000000","unitPrice":1399990,"unitSalePrice":1399990,"priceFormatted":"1 399 990 ₸","priceMinusBonus":1357991,"createdTime":"2026-10-16T08:41:39.214Z","stickers":[],"previewImages":[{"small":"https://resources.cdn-kaspi.kz/img/m/p/p6a/p37/179848971.png?format=preview-small","medium":"https://resources.cdn-kaspi.kz/img/m/p/p6a/p
